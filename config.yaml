@@ -1,0 +1,16 @@
+maschines:
+  test-rig-1:
+    blacklist-tags:
+      - cant_run_on_rig_1
+      - cant_run_anywhere
+    variables:
+      print: run_on_test_rig_1
+      delay:  5 seconds
+
+  test-rig-2:
+    blacklist-tags:
+      - cant_run_on_rig_2
+      - cant_run_anywhere
+    variables:
+      print: run_on_test_rig_2
+      delay:  1 seconds
