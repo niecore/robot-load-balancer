@@ -25,9 +25,15 @@ def flatten(items):
 
 def get_test_data_from_suite(root):
     for suite in root.iter("suite"):
+
+        print(suite.attrib["id"])
+
         for test in suite.iter("test"):
             name = test.attrib["name"]
-            tags = ""
+
+            for tag in test.find("tags").iter("tag"):
+                print(tag.text)
+
             duration_in_ms = 0
 
 
@@ -48,7 +54,8 @@ def dry_run():
                 PARAMETER_OUTPUT_DIR_TEMP,
                 TEST_FOLDER
             ]
-        )
+        ),
+        exit=False
     )
 
 def wet_run():
@@ -61,7 +68,8 @@ def wet_run():
                 PARAMETER_OUTPUT_DIR_TEMP,
                 TEST_FOLDER
             ]
-        )
+        ),
+        exit=False
     )
 
 if __name__ == "__main__":
@@ -69,9 +77,7 @@ if __name__ == "__main__":
 
 
 
-    if os.path.isfile(os.path.join(TEMP_FOLDER, "output.xml")):
-        get_test_data_from_output_file()
+    #if os.path.isfile(os.path.join(TEMP_FOLDER, "output.xml")):
 
-        wet_run()
-    else:
-        dry_run()
+    dry_run()
+    get_test_data_from_output_file()
