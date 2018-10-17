@@ -5,7 +5,7 @@ maschines:
       - cant_run_anywhere
     variables:
       print: run_on_test_rig_1
-      delay:  5 seconds
+      delay:  1 seconds
 
   test-rig-2:
     blacklist-tags:
